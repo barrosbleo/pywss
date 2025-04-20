@@ -15,6 +15,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.13
+      - run: |
+          python -m pip install --upgrade pip
+          pip install websockets
       - name: Generate ws key
         run: |
           echo "Generating ws key..."

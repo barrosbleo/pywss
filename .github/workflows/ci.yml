@@ -1,0 +1,27 @@
+name: Continuous Integration
+run-name: ${{ github.event_name }} - ${{ github.actor }}
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job started"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - run: echo "Code checked out"
+      - run: echo "Setting up Python 3.13"
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+      - run: echo "Python 3.13 set up"
+      - run: echo "Linting code"
+      - name: Lint code
+        uses: advanced-security/python-lint-code-scanning-action@v1.1.2
+        with:
+          linter: pylint

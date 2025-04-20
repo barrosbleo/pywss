@@ -1,0 +1,22 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+      - name: Generate ws key
+        run: |
+          echo "Generating ws key..."
+          python main.py
+          python client.py generate_ws_key

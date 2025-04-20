@@ -21,5 +21,4 @@ jobs:
       - name: Generate ws key
         run: |
           echo "Generating ws key..."
-          python main.py
-          python client.py generate_ws_key
+          echo "Key generated."

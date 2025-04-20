@@ -10,7 +10,8 @@ def hello(message):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        message = sys.argv[1]
+        for i in range(1, len(sys.argv)):
+            message = sys.argv[i]
+            hello(message)
     else:
-        message = "Hello, world!"
-    hello(message)
+        hello("Hello, world!")
